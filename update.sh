@@ -1,3 +1,18 @@
-sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get autoremove && sudo apt-get remove --purge $(deborphan) && sudo apt-get install -f && sudo dpkg --configure -a
-# updates repositorys, then installs all upgrades without requiring yes, then removes unneeded packages, then purges all orphaned packages (requires deborphan) then completes installing incompleted installations, then does some dpkg configure magic hooha
-# will edit the details with more complete information soon
+sudo apt-get update &&
+# updates the local package index with the latest changes made in the repositories
+# the APT package index is essentially a database of available packages
+# the repositories are defined in the /etc/apt/sources.list file and in the /etc/apt/sources.list.d directory.
+sudo apt-get dist-upgrade -y &&
+# "upgrade" is used to install the newest versions of all packages
+# currently installed on the system from the sources enumerated in
+# /etc/apt/sources.list
+# "dist-upgrade", in addition to performing the function of "upgrade",
+# also intelligently handles changing dependencies with new versions of packages
+sudo apt-get autoremove &&
+# is used to remove packages that were automatically installed to satisfy dependencies that are no longer needed
+sudo apt-get remove --purge $(deborphan) &&
+# finds packages that have no packages depending on them, that you did not explicitly install; removes them
+sudo apt-get install -f &&
+# attempt to correct a system with broken dependencies in place.
+sudo dpkg --configure -a
+# completes interrupted package operations
