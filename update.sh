@@ -12,7 +12,7 @@ sudo apt-get autoremove &&
 # is used to remove packages that were automatically installed to satisfy dependencies that are no longer needed
 sudo apt-get remove --purge $(deborphan) &&
 # finds packages that have no packages depending on them, that you did not explicitly install; removes them
-sudo apt-get install -f &&
+sudo apt-get -f install &&
 # attempt to correct a system with broken dependencies in place.
 sudo dpkg --configure -a
 # completes interrupted package operations
