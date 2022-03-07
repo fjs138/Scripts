@@ -1,4 +1,4 @@
-## Linux-Scripts
+## Scripts
 Scripts for Ubuntu, Arch, etc
 ## License
 MIT License
